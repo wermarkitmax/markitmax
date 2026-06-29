@@ -10,9 +10,9 @@ const NavHeader = styled.header<{ scrolled: boolean }>`
   width: 100%;
   z-index: 1000;
   padding: ${props => (props.scrolled ? "15px 5%" : "30px 5%")};
-  background-color: ${props => (props.scrolled ? "rgba(5, 5, 5, 0.85)" : "transparent")};
-  backdrop-filter: ${props => (props.scrolled ? "blur(12px)" : "none")};
-  border-bottom: 1px solid ${props => (props.scrolled ? "rgba(255, 255, 255, 0.05)" : "transparent")};
+  background-color: ${props => (props.scrolled ? "rgba(255, 255, 255, 0.85)" : "transparent")};
+  backdrop-filter: ${props => (props.scrolled ? "blur(20px)" : "none")};
+  border-bottom: 1px solid ${props => (props.scrolled ? "rgba(0, 0, 0, 0.06)" : "transparent")};
   transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, border-bottom 0.4s ease;
 `;
 
@@ -28,7 +28,7 @@ const Logo = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1D1D1F;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@ const Logo = styled.a`
   position: relative;
   
   span {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
@@ -54,14 +54,14 @@ const NavLinkItem = styled.a`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #B8B8B8;
+  color: #6E6E73;
   text-decoration: none;
   position: relative;
   padding: 8px 0;
   transition: color 0.3s ease;
   
   &:hover {
-    color: #FFFFFF;
+    color: #1D1D1F;
   }
   
   &::after {
@@ -71,7 +71,7 @@ const NavLinkItem = styled.a`
     left: 0;
     width: 0%;
     height: 1.5px;
-    background-color: #C7FF2F;
+    background-color: #000000;
     transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   
@@ -97,18 +97,18 @@ const MagneticCTA = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #050505;
-  background-color: #C7FF2F;
+  color: #FFFFFF;
+  background-color: #000000;
   padding: 12px 24px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(199, 255, 47, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
   
   &:hover {
-    box-shadow: 0 8px 25px rgba(199, 255, 47, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
   
   span {
@@ -133,7 +133,7 @@ const MobileMenuBtn = styled.button`
   display: none;
   background: none;
   border: none;
-  color: #FFFFFF;
+  color: #1D1D1F;
   cursor: pointer;
   z-index: 1002;
   
@@ -151,7 +151,8 @@ const MobileDrawer = styled.div<{ isOpen: boolean }>`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #050505;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(32px) saturate(190%);
   z-index: 1001;
   display: flex;
   flex-direction: column;
@@ -167,7 +168,7 @@ const DrawerBgGlow = styled.div`
   right: 0;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.08) 0%, rgba(0, 198, 255, 0.06) 50%, rgba(16, 185, 129, 0.03) 100%);
   pointer-events: none;
 `;
 
@@ -181,24 +182,24 @@ const DrawerLinkItem = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 8vw;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1D1D1F;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding-bottom: 12px;
   
   span {
-    color: #B8B8B8;
+    color: #6E6E73;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
   }
   
   &:hover {
-    color: #C7FF2F;
-    border-bottom-color: #C7FF2F;
+    color: #000000;
+    border-bottom-color: #000000;
   }
 `;
 
@@ -211,8 +212,8 @@ const DrawerCTA = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #050505;
-  background-color: #C7FF2F;
+  color: #FFFFFF;
+  background-color: #000000;
   padding: 16px;
   border-radius: 50px;
   text-decoration: none;

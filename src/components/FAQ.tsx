@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -32,7 +32,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C7FF2F;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -43,8 +43,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -54,22 +57,34 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
 const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  padding: 10px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+  
+  @media (max-width: 768px) {
+    padding: 10px 24px;
+  }
 `;
 
 const AccordionItem = styled.div<{ isOpen: boolean }>`
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s ease;
   
+  &:last-child {
+    border-bottom: none;
+  }
+  
   &:hover {
-    background-color: rgba(255, 255, 255, 0.01);
+    background-color: rgba(0, 0, 0, 0.01);
   }
 `;
 
@@ -83,7 +98,7 @@ const AccordionHeader = styled.button`
   border: none;
   cursor: pointer;
   text-align: left;
-  color: #FFFFFF;
+  color: #1D1D1F;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -99,9 +114,9 @@ const IconWrapper = styled.div<{ isOpen: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: ${props => (props.isOpen ? "#C7FF2F" : "rgba(255, 255, 255, 0.03)")};
-  border: 1px solid ${props => (props.isOpen ? "#C7FF2F" : "rgba(255, 255, 255, 0.08)")};
-  color: ${props => (props.isOpen ? "#050505" : "#FFFFFF")};
+  background-color: ${props => (props.isOpen ? "#000000" : "rgba(0, 0, 0, 0.02)")};
+  border: 1px solid ${props => (props.isOpen ? "#000000" : "rgba(0, 0, 0, 0.08)")};
+  color: ${props => (props.isOpen ? "#FFFFFF" : "#1D1D1F")};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,8 +124,8 @@ const IconWrapper = styled.div<{ isOpen: boolean }>`
   flex-shrink: 0;
   
   button:hover & {
-    border-color: #C7FF2F;
-    color: ${props => (props.isOpen ? "#050505" : "#C7FF2F")};
+    border-color: #000000;
+    color: ${props => (props.isOpen ? "#FFFFFF" : "#000000")};
   }
 `;
 
@@ -126,7 +141,7 @@ const PanelContent = styled.div`
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73;
   max-width: 800px;
 `;
 

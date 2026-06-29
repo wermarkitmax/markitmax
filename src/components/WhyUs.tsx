@@ -8,11 +8,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
+`;
+
+const Orb = styled.div<{ color: string; size: string; top: string; left?: string; right?: string }>`
+  position: absolute;
+  top: ${props => props.top};
+  ${props => (props.left ? `left: ${props.left};` : `right: ${props.right};`)}
+  width: ${props => props.size};
+  height: ${props => props.size};
+  background: ${props => props.color};
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 1;
 `;
 
 const Container = styled.div`
@@ -31,7 +45,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C7FF2F;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -42,8 +56,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -53,7 +70,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -69,19 +85,23 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 20px;
   padding: 50px 40px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
+  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   opacity: 0;
   transform: translateY(50px);
+  z-index: 3;
   
   &:hover {
-    border-color: rgba(199, 255, 47, 0.3);
+    border-color: rgba(0, 0, 0, 0.15);
     transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
   }
   
   &::before {
@@ -91,7 +111,7 @@ const Card = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top right, rgba(123, 97, 255, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at top right, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.4s ease;
   }
@@ -111,7 +131,7 @@ const CardGlow = styled.div`
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, #C7FF2F 0%, #7B61FF 100%);
+  background: linear-gradient(90deg, #000000 0%, #6E6E73 100%);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -121,7 +141,7 @@ const CardNumber = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #C7FF2F;
+  color: #1D1D1F !important;
   margin-bottom: 40px;
 `;
 
@@ -129,7 +149,7 @@ const CardTitle = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 24px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F !important;
   margin-bottom: 20px;
 `;
 
@@ -137,7 +157,7 @@ const CardDesc = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73 !important;
   margin-bottom: 40px;
 `;
 
@@ -145,10 +165,7 @@ const CardStat = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #FFFFFF;
-  background: linear-gradient(90deg, #FFFFFF 0%, #B8B8B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1D1D1F !important;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -159,7 +176,7 @@ const CardStat = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #C7FF2F;
+    background-color: #000000 !important;
   }
 `;
 
@@ -170,7 +187,7 @@ const SectionGlow = styled.div`
   left: -20%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.01) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
 `;
 
@@ -202,6 +219,8 @@ export function WhyUs() {
 
   return (
     <Section id="why" ref={sectionRef}>
+      <Orb color="radial-gradient(circle, rgba(123, 97, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%)" size="450px" top="10%" left="-10%" />
+      <Orb color="radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(255, 255, 255, 0) 100%)" size="450px" top="40%" right="-10%" />
       <SectionGlow />
       <Container>
         <SectionHeader>

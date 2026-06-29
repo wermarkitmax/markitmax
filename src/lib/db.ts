@@ -178,7 +178,7 @@ export const bulkCreateRecordsFn = createServerFn({ method: "POST" })
 
 export const fetchDashboardStats = createServerFn({ method: "GET" })
   .handler(async () => {
-    const [leads, contacts, projects, invoices, expenses] = await Promise.all([
+    const [leads, contacts, projects, invoices, expenses, sales] = await Promise.all([
       prisma.lead.findMany({ select: { id: true, status: true, createdAt: true } }),
       prisma.contact.findMany({ select: { id: true } }),
       prisma.project.findMany({
@@ -190,15 +190,26 @@ export const fetchDashboardStats = createServerFn({ method: "GET" })
       prisma.expense.findMany({
         select: { id: true, amount: true, expenseDate: true },
       }),
+      prisma.sale.findMany({
+        select: { id: true, sellingPrice: true, purchaseCost: true, quantity: true, saleDate: true, paymentStatus: true },
+      }),
     ]);
+
+    const salesRevenue = sales
+      .filter((s) => s.paymentStatus === "paid")
+      .reduce((sum, s) => sum + Number(s.sellingPrice) * Number(s.quantity ?? 1), 0);
+    const salesPending = sales
+      .filter((s) => s.paymentStatus !== "paid")
+      .reduce((sum, s) => sum + Number(s.sellingPrice) * Number(s.quantity ?? 1), 0);
+    const salesExpense = sales.reduce((sum, s) => sum + Number(s.purchaseCost ?? 0), 0);
 
     const revenue = invoices
       .filter((i) => i.status === "paid")
-      .reduce((s, i) => s + Number(i.total), 0);
+      .reduce((s, i) => s + Number(i.total), 0) + salesRevenue;
     const pending = invoices
       .filter((i) => i.status !== "paid")
-      .reduce((s, i) => s + Number(i.total), 0);
-    const expenseTotal = expenses.reduce((s, e) => s + Number(e.amount), 0);
+      .reduce((s, i) => s + Number(i.total), 0) + salesPending;
+    const expenseTotal = expenses.reduce((s, e) => s + Number(e.amount), 0) + salesExpense;
 
     return {
       leadsTotal: leads.length,
@@ -223,6 +234,14 @@ export const fetchDashboardStats = createServerFn({ method: "GET" })
         amount: Number(e.amount),
         expense_date: e.expenseDate.toISOString(),
       })),
+      salesArr: sales.map((s) => ({
+        id: s.id,
+        selling_price: Number(s.sellingPrice),
+        purchase_cost: Number(s.purchaseCost ?? 0),
+        quantity: Number(s.quantity ?? 1),
+        sale_date: s.saleDate.toISOString(),
+        payment_status: s.paymentStatus,
+      })),
     };
   });
 
@@ -238,7 +257,7 @@ export const fetchAccountsData = createServerFn({ method: "GET" })
         select: { amount: true, category: true, expenseDate: true },
       }),
       prisma.sale.findMany({
-        select: { sellingPrice: true, purchaseCost: true, quantity: true, saleDate: true },
+        select: { sellingPrice: true, purchaseCost: true, quantity: true, saleDate: true, paymentStatus: true },
       }),
     ]);
 
@@ -258,6 +277,7 @@ export const fetchAccountsData = createServerFn({ method: "GET" })
         purchase_cost: Number(s.purchaseCost ?? 0),
         quantity: Number(s.quantity ?? 1),
         sale_date: s.saleDate.toISOString(),
+        payment_status: s.paymentStatus,
       })),
     };
   });

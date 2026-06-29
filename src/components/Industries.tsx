@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #F5F5F7; /* Apple Premium Light Gray */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -33,7 +33,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C7FF2F;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -44,8 +44,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -55,7 +58,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -75,10 +77,11 @@ const Grid = styled.div`
 `;
 
 const IndustryCard = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 20px;
   padding: 40px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -86,9 +89,9 @@ const IndustryCard = styled.div`
   transform: translateY(30px);
   
   &:hover {
-    border-color: rgba(199, 255, 47, 0.25);
+    border-color: rgba(0, 0, 0, 0.12);
     transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
   
   &::before {
@@ -98,7 +101,7 @@ const IndustryCard = styled.div`
     right: -30%;
     width: 120px;
     height: 120px;
-    background: radial-gradient(circle, rgba(199, 255, 47, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.01) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -110,8 +113,8 @@ const IndustryCard = styled.div`
   }
 
   &:hover .industry-icon-box {
-    background-color: rgba(199, 255, 47, 0.08);
-    border-color: rgba(199, 255, 47, 0.3);
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.12);
     transform: scale(1.05);
   }
 `;
@@ -120,9 +123,9 @@ const IconBox = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #C7FF2F;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #1D1D1F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +137,7 @@ const CardName = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
   margin-bottom: 12px;
 `;
 
@@ -142,7 +145,7 @@ const CardDesc = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   line-height: 1.5;
-  color: #888888;
+  color: #6E6E73;
 `;
 
 function DynamicLucideIcon({ name, size = 22 }: { name: string; size?: number }) {

@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -39,7 +39,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #7B61FF;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -50,8 +50,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -61,7 +64,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -80,22 +82,22 @@ const CarouselWrapper = styled.div`
   .swiper-pagination-bullet {
     width: 6px;
     height: 6px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.15);
     opacity: 1;
     transition: all 0.3s ease;
   }
   
   .swiper-pagination-bullet-active {
     width: 24px;
-    background-color: #7B61FF;
+    background-color: #000000;
     border-radius: 4px;
   }
 `;
 
 const TestimonialCard = styled.div`
-  background: rgba(16, 16, 16, 0.4);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 28px;
   padding: 60px;
   position: relative;
@@ -105,14 +107,16 @@ const TestimonialCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 40px;
-  transition: border-color 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
   
   @media (max-width: 768px) {
     padding: 40px 30px;
   }
   
   &:hover {
-    border-color: rgba(123, 97, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
 `;
 
@@ -120,7 +124,7 @@ const QuoteIconWrapper = styled.div`
   position: absolute;
   top: 40px;
   right: 40px;
-  color: rgba(123, 97, 255, 0.15);
+  color: rgba(0, 0, 0, 0.03);
   pointer-events: none;
   
   svg {
@@ -143,7 +147,7 @@ const QuoteText = styled.blockquote`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.6;
-  color: #FFFFFF;
+  color: #1D1D1F;
   border: none;
   padding: 0;
   margin: 0;
@@ -168,7 +172,7 @@ const AuthorImage = styled.img`
   height: 56px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
 const AuthorInfo = styled.div`
@@ -180,14 +184,14 @@ const Name = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
   margin-bottom: 2px;
 `;
 
 const RoleCompany = styled.div`
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #888888;
+  color: #6E6E73;
   
   span {
     color: #7B61FF;

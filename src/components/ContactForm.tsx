@@ -9,8 +9,8 @@ const DrawerOverlay = styled.div<{ isOpen: boolean }>`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(5, 5, 5, 0.7);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
   z-index: 2000;
   opacity: ${props => (props.isOpen ? 1 : 0)};
   pointer-events: ${props => (props.isOpen ? "all" : "none")};
@@ -23,9 +23,10 @@ const DrawerContent = styled.div`
   width: 100%;
   max-width: 580px;
   height: 100%;
-  background-color: #101010;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(32px) saturate(190%);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.05);
   padding: 60px;
   position: relative;
   display: flex;
@@ -48,31 +49,31 @@ const FormTitle = styled.h2`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1D1D1F;
   
   span {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
 const CloseButton = styled.button`
   background: none;
   border: none;
-  color: #B8B8B8;
+  color: #6E6E73;
   cursor: pointer;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   
   &:hover {
-    color: #FFFFFF;
-    border-color: #FFFFFF;
-    background-color: rgba(255, 255, 255, 0.03);
+    color: #000000;
+    border-color: #000000;
+    background-color: rgba(0, 0, 0, 0.03);
     transform: rotate(90deg);
   }
 `;
@@ -94,15 +95,15 @@ const FloatingInput = styled.input`
   padding: 12px 0;
   background: none;
   border: none;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+  color: #1D1D1F;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   outline: none;
   transition: border-color 0.3s ease;
   
   &:focus {
-    border-color: #C7FF2F;
+    border-color: #000000;
   }
 `;
 
@@ -112,7 +113,7 @@ const FloatingLabel = styled.label<{ isFocused: boolean }>`
   left: 0;
   font-family: 'Inter', sans-serif;
   font-size: ${props => (props.isFocused ? "11px" : "14px")};
-  color: ${props => (props.isFocused ? "#C7FF2F" : "#888888")};
+  color: ${props => (props.isFocused ? "#000000" : "#888888")};
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   pointer-events: none;
 `;
@@ -128,8 +129,8 @@ const FloatingTextarea = styled.textarea`
   padding: 12px 0;
   background: none;
   border: none;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+  color: #1D1D1F;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   outline: none;
@@ -137,7 +138,7 @@ const FloatingTextarea = styled.textarea`
   transition: border-color 0.3s ease;
   
   &:focus {
-    border-color: #C7FF2F;
+    border-color: #000000;
   }
 `;
 
@@ -153,7 +154,7 @@ const SectionLabel = styled.span`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B8B8B8;
+  color: #8E8E93;
 `;
 
 const BadgeRow = styled.div`
@@ -163,9 +164,9 @@ const BadgeRow = styled.div`
 `;
 
 const OptionBadge = styled.button<{ selected: boolean }>`
-  background-color: ${props => (props.selected ? "rgba(199, 255, 47, 0.1)" : "rgba(255, 255, 255, 0.02)")};
-  border: 1px solid ${props => (props.selected ? "#C7FF2F" : "rgba(255, 255, 255, 0.08)")};
-  color: ${props => (props.selected ? "#C7FF2F" : "#FFFFFF")};
+  background-color: ${props => (props.selected ? "rgba(0, 0, 0, 0.04)" : "rgba(0, 0, 0, 0.02)")};
+  border: 1px solid ${props => (props.selected ? "#000000" : "rgba(0, 0, 0, 0.08)")};
+  color: ${props => (props.selected ? "#000000" : "#1D1D1F")};
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -175,7 +176,7 @@ const OptionBadge = styled.button<{ selected: boolean }>`
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: ${props => (props.selected ? "#C7FF2F" : "rgba(255, 255, 255, 0.2)")};
+    border-color: ${props => (props.selected ? "#000000" : "rgba(0, 0, 0, 0.2)")};
   }
 `;
 
@@ -184,9 +185,9 @@ const SubmitButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #C7FF2F;
+  background-color: #000000;
   border: none;
-  color: #050505;
+  color: #FFFFFF;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -195,12 +196,12 @@ const SubmitButton = styled.button`
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   margin-top: 20px;
-  box-shadow: 0 4px 15px rgba(199, 255, 47, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   
   &:hover {
-    background-color: #7B61FF;
+    background-color: #333333;
     color: #FFFFFF;
-    box-shadow: 0 8px 25px rgba(123, 97, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
   
@@ -232,7 +233,7 @@ const SuccessScreen = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #101010;
+  background-color: #FFFFFF;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -243,7 +244,7 @@ const SuccessScreen = styled.div`
 `;
 
 const SuccessIconWrapper = styled.div`
-  color: #C7FF2F;
+  color: #000000;
   margin-bottom: 24px;
   position: relative;
   
@@ -256,7 +257,7 @@ const SuccessIconWrapper = styled.div`
     position: absolute;
     top: -10px;
     right: -10px;
-    color: #7B61FF;
+    color: #6E6E73;
     animation: bounce 2s infinite alternate;
   }
   

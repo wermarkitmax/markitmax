@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { Github, Twitter, Linkedin, Instagram, ArrowRight, Sparkles } from "lucide-react";
 
 const FooterContainer = styled.footer`
-  background-color: #050505;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #F5F5F7; /* Apple Premium Light Gray */
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding: 100px 5% 40px 5%;
   display: flex;
   justify-content: center;
@@ -44,14 +44,14 @@ const Logo = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 26px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1D1D1F;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 6px;
   
   span {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
@@ -59,7 +59,7 @@ const Tagline = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73;
   max-width: 280px;
 `;
 
@@ -73,18 +73,18 @@ const SocialIcon = styled.a`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #B8B8B8;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #6E6E73;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   
   &:hover {
-    color: #C7FF2F;
-    border-color: #C7FF2F;
-    background-color: rgba(199, 255, 47, 0.05);
+    color: #FFFFFF;
+    border-color: #000000;
+    background-color: #000000;
     transform: translateY(-2px);
   }
 `;
@@ -101,7 +101,7 @@ const ColumnTitle = styled.h3`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #FFFFFF;
+  color: #1D1D1F;
 `;
 
 const LinkList = styled.ul`
@@ -116,12 +116,12 @@ const LinkList = styled.ul`
 const FooterLink = styled.a`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: #888888;
+  color: #6E6E73;
   text-decoration: none;
   transition: color 0.3s ease;
   
   &:hover {
-    color: #FFFFFF;
+    color: #000000;
   }
 `;
 
@@ -135,7 +135,7 @@ const NewsText = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73;
 `;
 
 const Form = styled.form`
@@ -147,18 +147,17 @@ const Form = styled.form`
 const Input = styled.input`
   width: 100%;
   padding: 16px 56px 16px 20px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 50px;
-  color: #FFFFFF;
+  color: #1D1D1F;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   outline: none;
   transition: all 0.3s ease;
   
   &:focus {
-    border-color: #C7FF2F;
-    background-color: rgba(255, 255, 255, 0.04);
+    border-color: #000000;
   }
 `;
 
@@ -170,9 +169,9 @@ const SubmitButton = styled.button`
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #C7FF2F;
+  background-color: #000000;
   border: none;
-  color: #050505;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,8 +179,7 @@ const SubmitButton = styled.button`
   transition: all 0.3s ease;
   
   &:hover {
-    background-color: #7B61FF;
-    color: #FFFFFF;
+    background-color: #333333;
   }
 `;
 
@@ -191,7 +189,7 @@ const SuccessMsg = styled.div`
   gap: 8px;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #C7FF2F;
+  color: #000000;
   padding-left: 8px;
   
   svg {
@@ -204,7 +202,7 @@ const SuccessMsg = styled.div`
 `;
 
 const BottomBar = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
@@ -213,7 +211,7 @@ const BottomBar = styled.div`
   gap: 20px;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #555555;
+  color: #8E8E93;
 `;
 
 const PolicyLinks = styled.div`
@@ -221,12 +219,12 @@ const PolicyLinks = styled.div`
   gap: 24px;
   
   a {
-    color: #555555;
+    color: #8E8E93;
     text-decoration: none;
     transition: color 0.3s ease;
     
     &:hover {
-      color: #888888;
+      color: #1D1D1F;
     }
   }
 `;

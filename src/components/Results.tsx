@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -32,7 +32,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C7FF2F;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -43,8 +43,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -54,7 +57,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -75,19 +77,22 @@ const StatsGrid = styled.div`
 `;
 
 const StatCard = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
-  transition: border-color 0.4s ease, transform 0.4s ease;
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   opacity: 0;
   transform: translateY(40px);
   
   &:hover {
-    border-color: rgba(123, 97, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
 `;
 
@@ -95,13 +100,13 @@ const CounterWrapper = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 64px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1D1D1F;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  background: linear-gradient(135deg, #FFFFFF 40%, #B8B8B8 100%);
+  background: linear-gradient(135deg, #1D1D1F 40%, #6E6E73 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
@@ -115,15 +120,15 @@ const ValueSpan = styled.span`
 `;
 
 const SuffixSpan = styled.span`
-  color: #C7FF2F;
-  -webkit-text-fill-color: #C7FF2F;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
 `;
 
 const StatLabel = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
   margin-bottom: 12px;
 `;
 
@@ -131,7 +136,7 @@ const StatDesc = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   line-height: 1.5;
-  color: #888888;
+  color: #6E6E73;
 `;
 
 const OrbBg = styled.div`
@@ -141,7 +146,7 @@ const OrbBg = styled.div`
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(199, 255, 47, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.01) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
 `;
 

@@ -39,24 +39,33 @@ function Dashboard() {
       const dt = new Date(); dt.setMonth(dt.getMonth() - i);
       const key = dt.toLocaleDateString("en-US", { month: "short" });
       const monthIdx = dt.getMonth(); const year = dt.getFullYear();
+      
       const rev = (d?.invoicesArr ?? []).filter((iv) => {
         const dd = new Date(iv.issue_date);
         return dd.getMonth() === monthIdx && dd.getFullYear() === year && iv.status === "paid";
-      }).reduce((s, i) => s + Number(i.total), 0);
+      }).reduce((s, i) => s + Number(i.total), 0) + (d?.salesArr ?? []).filter((s) => {
+        const dd = new Date(s.sale_date);
+        return dd.getMonth() === monthIdx && dd.getFullYear() === year && s.payment_status === "paid";
+      }).reduce((sum, s) => sum + Number(s.selling_price) * Number(s.quantity ?? 1), 0);
+
       const exp = (d?.expensesArr ?? []).filter((e) => {
         const dd = new Date(e.expense_date);
         return dd.getMonth() === monthIdx && dd.getFullYear() === year;
-      }).reduce((s, e) => s + Number(e.amount), 0);
+      }).reduce((s, e) => s + Number(e.amount), 0) + (d?.salesArr ?? []).filter((s) => {
+        const dd = new Date(s.sale_date);
+        return dd.getMonth() === monthIdx && dd.getFullYear() === year;
+      }).reduce((sum, s) => sum + Number(s.purchase_cost ?? 0), 0);
+
       months.push({ name: key, revenue: rev, expenses: exp });
     }
     return months;
   })();
 
   const adminCards = [
-    { label: "Revenue", value: fmtCurrency(d?.revenue), icon: TrendingUp, hint: "Paid invoices" },
-    { label: "Expenses", value: fmtCurrency(d?.expenses), icon: TrendingDown, hint: "All time" },
+    { label: "Revenue", value: fmtCurrency(d?.revenue), icon: TrendingUp, hint: "Paid invoices & sales" },
+    { label: "Expenses", value: fmtCurrency(d?.expenses), icon: TrendingDown, hint: "All time + sales costs" },
     { label: "Net Profit", value: fmtCurrency(d?.profit), icon: Wallet, hint: "Revenue − Expenses" },
-    { label: "Outstanding", value: fmtCurrency(d?.pending), icon: Receipt, hint: "Unpaid invoices" },
+    { label: "Outstanding", value: fmtCurrency(d?.pending), icon: Receipt, hint: "Unpaid invoices & sales" },
   ];
   const opsCards = [
     { label: "Leads", value: fmtNumber(d?.leadsTotal), icon: Users, hint: `${d?.leadsWon ?? 0} won` },

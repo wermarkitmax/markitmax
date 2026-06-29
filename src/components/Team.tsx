@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -32,7 +32,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C7FF2F;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -43,8 +43,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -54,7 +57,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -75,8 +77,9 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 24px;
   overflow: hidden;
   position: relative;
@@ -84,13 +87,15 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   opacity: 0;
   transform: translateY(50px);
   
   &:hover {
-    border-color: rgba(199, 255, 47, 0.3);
+    border-color: rgba(0, 0, 0, 0.15);
     transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
 
   &:hover .team-portrait {
@@ -99,7 +104,7 @@ const Card = styled.div`
   }
 
   &:hover .team-color-overlay {
-    background: linear-gradient(180deg, rgba(123, 97, 255, 0.1) 0%, rgba(5, 5, 5, 0.95) 85%);
+    background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.95) 85%);
   }
 
   &:hover .team-hover-content {
@@ -132,7 +137,7 @@ const ColorOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 5, 0.95) 90%);
+  background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.95) 90%);
   z-index: 2;
   transition: background 0.4s ease;
 `;
@@ -151,14 +156,14 @@ const Name = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 24px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
 `;
 
 const Role = styled.div`
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #C7FF2F;
-  font-weight: 500;
+  color: #000000;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -178,7 +183,7 @@ const BioText = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   line-height: 1.5;
-  color: #B8B8B8;
+  color: #6E6E73;
 `;
 
 const SocialLinks = styled.div`
@@ -187,14 +192,14 @@ const SocialLinks = styled.div`
 `;
 
 const SocialIcon = styled.a`
-  color: #FFFFFF;
+  color: #1D1D1F;
   opacity: 0.6;
   transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
   
   &:hover {
-    color: #C7FF2F;
+    color: #000000;
     opacity: 1;
     transform: translateY(-2px);
   }

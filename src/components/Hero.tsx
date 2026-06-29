@@ -8,10 +8,10 @@ const HeroSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 120px 5% 60px 5%;
-  background-color: #050505;
+  padding: 100px 5% 40px 5%;
+  background-color: #FFFFFF;
   overflow: hidden;
 `;
 
@@ -26,7 +26,7 @@ const Orb = styled.div<{ color: string; size: string; top: string; left: string 
   filter: blur(120px);
   border-radius: 50%;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.25;
   z-index: 1;
 `;
 
@@ -51,18 +51,18 @@ const FloatingBadge = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 50px;
   padding: 6px 14px;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #B8B8B8;
+  color: #6E6E73;
   backdrop-filter: blur(8px);
   
   svg {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
@@ -71,7 +71,7 @@ const MainTitle = styled.h1`
   font-size: 5.5vw;
   font-weight: 700;
   line-height: 1.1;
-  color: #FFFFFF;
+  color: #1D1D1F;
   letter-spacing: -0.02em;
   margin-bottom: 24px;
   opacity: 0;
@@ -84,7 +84,7 @@ const MainTitle = styled.h1`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    background: linear-gradient(90deg, #7B61FF 0%, #C7FF2F 100%);
+    background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 40%, #00C6FF 70%, #10B981 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -94,7 +94,7 @@ const Subtitle = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73;
   max-width: 700px;
   margin: 0 auto 40px auto;
   opacity: 0;
@@ -124,16 +124,18 @@ const PrimaryButton = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #050505;
-  background-color: #C7FF2F;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 16px 36px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(199, 255, 47, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   
   &:hover {
-    box-shadow: 0 8px 30px rgba(199, 255, 47, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
   
@@ -150,17 +152,18 @@ const SecondaryButton = styled.a`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #FFFFFF;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #1D1D1F;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
   padding: 16px 36px;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: #FFFFFF;
-    background-color: rgba(255, 255, 255, 0.05);
+    border-color: #000000;
+    background-color: rgba(0, 0, 0, 0.04);
   }
   
   @media (max-width: 480px) {
@@ -177,12 +180,12 @@ const DynamicBadge = styled.div<{ top: string; left?: string; right?: string }>`
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: rgba(16, 16, 16, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   padding: 12px 18px;
   backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   z-index: 2;
   pointer-events: none;
   opacity: 0;
@@ -198,8 +201,8 @@ const DynamicBadge = styled.div<{ top: string; left?: string; right?: string }>`
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: rgba(199, 255, 47, 0.1);
-    color: #C7FF2F;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: #000000;
   }
   
   .badge-content {
@@ -212,18 +215,18 @@ const DynamicBadge = styled.div<{ top: string; left?: string; right?: string }>`
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #1D1D1F;
   }
   
   .badge-subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    color: #B8B8B8;
+    color: #6E6E73;
   }
 `;
 
 const TrustedSection = styled.div`
-  margin-top: 90px;
+  margin-top: 50px;
   opacity: 0;
   z-index: 2;
   position: relative;
@@ -258,28 +261,28 @@ const LogoPlaceholder = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
   letter-spacing: -0.02em;
   
   span {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
 const ScrollIndicator = styled.div`
-  position: absolute;
-  bottom: 40px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: #B8B8B8;
+  color: #6E6E73;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.05em;
   cursor: pointer;
   z-index: 2;
   opacity: 0;
+  margin-top: 30px;
   
   svg {
     width: 16px;
@@ -303,7 +306,6 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Entrance animations
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
     
     tl.to(badgesRef.current, { opacity: 1, y: 0, duration: 1 })
@@ -313,63 +315,19 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
       .to([sideBadge1Ref.current, sideBadge2Ref.current], { opacity: 1, y: 0, stagger: 0.2, duration: 1 }, "-=0.7")
       .to([trustedRef.current, scrollRef.current], { opacity: 1, y: 0, duration: 1, stagger: 0.2 }, "-=0.5");
 
-    // Float side badges up and down continuously
-    gsap.to(sideBadge1Ref.current, {
-      y: "-=15",
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-    
-    gsap.to(sideBadge2Ref.current, {
-      y: "+=15",
-      duration: 3.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.5
-    });
+    gsap.to(sideBadge1Ref.current, { y: "-=15", duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut" });
+    gsap.to(sideBadge2Ref.current, { y: "+=15", duration: 3.5, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 0.5 });
 
-    // Pulse scroll arrow
-    gsap.to(scrollRef.current?.querySelector("svg") || null, {
-      y: 5,
-      duration: 0.8,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut"
-    });
+    gsap.to(scrollRef.current?.querySelector("svg") || null, { y: 5, duration: 0.8, repeat: -1, yoyo: true, ease: "power1.inOut" });
 
-    // Parallax background orbs movement on mouse move
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
-      const xPercent = (clientX / window.innerWidth - 0.5) * 2; // -1 to 1
-      const yPercent = (clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+      const xPercent = (clientX / window.innerWidth - 0.5) * 2;
+      const yPercent = (clientY / window.innerHeight - 0.5) * 2;
 
-      if (orb1Ref.current) {
-        gsap.to(orb1Ref.current, {
-          x: xPercent * 40,
-          y: yPercent * 40,
-          duration: 1.2,
-          ease: "power2.out"
-        });
-      }
-      if (orb2Ref.current) {
-        gsap.to(orb2Ref.current, {
-          x: xPercent * -30,
-          y: yPercent * -30,
-          duration: 1.5,
-          ease: "power2.out"
-        });
-      }
-      if (orb3Ref.current) {
-        gsap.to(orb3Ref.current, {
-          x: xPercent * 25,
-          y: yPercent * -25,
-          duration: 1.8,
-          ease: "power2.out"
-        });
-      }
+      if (orb1Ref.current) gsap.to(orb1Ref.current, { x: xPercent * 40, y: yPercent * 40, duration: 1.2, ease: "power2.out" });
+      if (orb2Ref.current) gsap.to(orb2Ref.current, { x: xPercent * -30, y: yPercent * -30, duration: 1.5, ease: "power2.out" });
+      if (orb3Ref.current) gsap.to(orb3Ref.current, { x: xPercent * 25, y: yPercent * -25, duration: 1.8, ease: "power2.out" });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -378,26 +336,22 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
 
   const handleScrollClick = () => {
     const element = document.getElementById("why");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <HeroSection ref={containerRef}>
-      {/* Background orbs */}
-      <Orb ref={orb1Ref} color="radial-gradient(circle, #7B61FF 0%, rgba(0,0,0,0) 100%)" size="600px" top="-10%" left="-10%" />
-      <Orb ref={orb2Ref} color="radial-gradient(circle, #C7FF2F 0%, rgba(0,0,0,0) 100%)" size="500px" top="30%" left="60%" />
-      <Orb ref={orb3Ref} color="radial-gradient(circle, #00E0FF 0%, rgba(0,0,0,0) 100%)" size="450px" top="60%" left="-5%" />
+      <Orb ref={orb1Ref} color="radial-gradient(circle, rgba(123, 97, 255, 0.08) 0%, rgba(255,255,255,0) 100%)" size="600px" top="-10%" left="-10%" />
+      <Orb ref={orb2Ref} color="radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, rgba(255,255,255,0) 100%)" size="500px" top="30%" left="60%" />
+      <Orb ref={orb3Ref} color="radial-gradient(circle, rgba(0, 224, 255, 0.05) 0%, rgba(255,255,255,0) 100%)" size="450px" top="60%" left="-5%" />
 
-      {/* Floating side badges */}
       <DynamicBadge ref={sideBadge1Ref} top="25%" left="8%">
         <div className="badge-icon">
           <Sparkles size={16} />
         </div>
         <div className="badge-content">
-          <div className="badge-title">Interactive UI</div>
-          <div className="badge-subtitle">Fluid GSAP & CSS</div>
+          <div className="badge-title">Bespoke Design</div>
+          <div className="badge-subtitle">Tailored for Impact</div>
         </div>
       </DynamicBadge>
 
@@ -406,13 +360,14 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
           <CheckCircle2 size={16} />
         </div>
         <div className="badge-content">
-          <div className="badge-title">Next.js & React</div>
-          <div className="badge-subtitle">Enterprise Build</div>
+          <div className="badge-title">Elite Engineering</div>
+          <div className="badge-subtitle">Designed to Scale</div>
         </div>
       </DynamicBadge>
 
+      <div style={{ flexGrow: 1 }} />
+
       <ContentWrapper>
-        {/* Badges row */}
         <BadgesContainer ref={badgesRef} style={{ transform: "translateY(20px)" }}>
           <FloatingBadge>
             <Sparkles size={14} /> Creative Studio
@@ -425,19 +380,16 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
           </FloatingBadge>
         </BadgesContainer>
 
-        {/* Heading */}
         <MainTitle ref={titleRef} style={{ transform: "translateY(30px)" }}>
           Scaling Brands Through<br />
           <span className="italic">Strategy, Design</span> & Dev
         </MainTitle>
 
-        {/* Subtitle */}
         <Subtitle ref={subtitleRef} style={{ transform: "translateY(30px)" }}>
           We engineer luxury digital ecosystems that convert. Our custom user-experience maps 
           and bespoke frontend builds elevate corporate brands to their maximum potential.
         </Subtitle>
 
-        {/* CTAs */}
         <CTAWrapper ref={ctaContainerRef} style={{ transform: "translateY(30px)" }}>
           <PrimaryButton href="#" onClick={(e) => { e.preventDefault(); onContactClick(); }}>
             Start Project <ArrowUpRight size={18} />
@@ -450,7 +402,6 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
           </SecondaryButton>
         </CTAWrapper>
 
-        {/* Trusted Logos */}
         <TrustedSection ref={trustedRef} style={{ transform: "translateY(30px)" }}>
           <TrustedText>Trusted by disruptive industry leaders</TrustedText>
           <TrustedLogos>
@@ -463,7 +414,8 @@ export function Hero({ onContactClick }: { onContactClick: () => void }) {
         </TrustedSection>
       </ContentWrapper>
 
-      {/* Scroll indicator */}
+      <div style={{ flexGrow: 1 }} />
+
       <ScrollIndicator ref={scrollRef} onClick={handleScrollClick} style={{ transform: "translateY(10px)" }}>
         <span>SCROLL DOWN</span>
         <ArrowDown />

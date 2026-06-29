@@ -39,13 +39,13 @@ const globalStyles = css`
 
   html {
     scroll-behavior: auto; /* Required for Lenis smooth scroll */
-    background-color: #050505;
+    background-color: #FFFFFF;
     overflow-x: hidden;
   }
 
   body {
-    background-color: #050505;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #1D1D1F;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     overflow-x: hidden;
@@ -57,22 +57,22 @@ const globalStyles = css`
   }
   
   ::-webkit-scrollbar-track {
-    background: #050505;
+    background: #FFFFFF;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 3px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #C7FF2F;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   /* Custom text highlights */
   ::selection {
-    background-color: #C7FF2F;
-    color: #050505;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #1D1D1F;
   }
 `;
 
@@ -86,7 +86,7 @@ const NoiseOverlay = styled.div`
   width: 200%;
   height: 200%;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.015;
+  opacity: 0.012;
   pointer-events: none;
   z-index: 9999;
   animation: noiseAnimation 0.2s infinite;
@@ -109,7 +109,7 @@ const NoiseOverlay = styled.div`
 const AppContainer = styled.div`
   position: relative;
   width: 100%;
-  background-color: #050505;
+  background-color: #FFFFFF;
 `;
 
 export function MarkitMaxApp() {

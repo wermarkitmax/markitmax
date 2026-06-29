@@ -7,7 +7,7 @@ import { processData } from "../data/mockData";
 gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   
@@ -49,7 +49,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #7B61FF;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -60,8 +60,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -71,7 +74,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -98,7 +100,7 @@ const TimelineLine = styled.div`
   top: 50%;
   left: 0;
   height: 2px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.06);
   z-index: 1;
   pointer-events: none;
   
@@ -121,7 +123,7 @@ const TimelineProgressLine = styled.div`
   top: 50%;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #7B61FF 0%, #C7FF2F 100%);
+  background: linear-gradient(90deg, #000000 0%, #6E6E73 100%);
   z-index: 2;
   pointer-events: none;
   transform-origin: left;
@@ -143,13 +145,15 @@ const TimelineProgressLine = styled.div`
 `;
 
 const StepCard = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 24px;
   padding: 40px;
   position: relative;
   z-index: 3;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   
   @media (min-width: 969px) {
     width: 360px;
@@ -157,12 +161,13 @@ const StepCard = styled.div`
   }
   
   &:hover {
-    border-color: rgba(199, 255, 47, 0.3);
+    border-color: rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
 
   &:hover .step-card-value {
-    color: #C7FF2F;
+    color: #000000;
   }
 `;
 
@@ -170,8 +175,8 @@ const StepNum = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #C7FF2F;
-  background-color: rgba(199, 255, 47, 0.1);
+  color: #1D1D1F;
+  background-color: rgba(0, 0, 0, 0.04);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -179,7 +184,7 @@ const StepNum = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
-  box-shadow: 0 4px 10px rgba(199, 255, 47, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
   
   @media (max-width: 968px) {
     width: 48px;
@@ -192,7 +197,7 @@ const StepTitle = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 22px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F;
   margin-bottom: 16px;
 `;
 
@@ -200,19 +205,19 @@ const StepDesc = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73;
   margin-bottom: 24px;
 `;
 
 const DeliverableBox = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 18px;
   
   .label {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
-    color: #555555;
+    color: #8E8E93;
     letter-spacing: 0.05em;
     margin-bottom: 4px;
   }
@@ -221,7 +226,7 @@ const DeliverableBox = styled.div`
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #6E6E73;
     transition: color 0.3s ease;
   }
 `;

@@ -8,7 +8,7 @@ const CursorContainer = styled.div<{ active: boolean }>`
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: #C7FF2F;
+  background-color: #000000;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -20,7 +20,7 @@ const CursorContainer = styled.div<{ active: boolean }>`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 8px;
   font-weight: 700;
-  color: #050505;
+  color: #FFFFFF;
   letter-spacing: 0.05em;
   opacity: 0;
   
@@ -35,7 +35,7 @@ const CursorRing = styled.div`
   left: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -99,9 +99,9 @@ export function CustomCursor() {
         gsap.to(cursor, {
           width: 70,
           height: 70,
-          backgroundColor: "#C7FF2F",
+          backgroundColor: "#000000",
           mixBlendMode: "normal",
-          color: "#050505",
+          color: "#FFFFFF",
           fontSize: "10px",
           duration: 0.3,
           ease: "power2.out"
@@ -127,7 +127,7 @@ export function CustomCursor() {
         gsap.to(ring, {
           width: 55,
           height: 55,
-          borderColor: "#C7FF2F",
+          borderColor: "#000000",
           borderWidth: "1.5px",
           duration: 0.3
         });
@@ -148,7 +148,7 @@ export function CustomCursor() {
         gsap.to(cursor, {
           width: 20,
           height: 20,
-          backgroundColor: "#C7FF2F",
+          backgroundColor: "#000000",
           mixBlendMode: "normal",
           duration: 0.3,
           ease: "power2.out"
@@ -158,7 +158,7 @@ export function CustomCursor() {
           scale: 1,
           width: 40,
           height: 40,
-          borderColor: "rgba(255, 255, 255, 0.3)",
+          borderColor: "rgba(0, 0, 0, 0.25)",
           borderWidth: "1px",
           opacity: 1,
           duration: 0.3

@@ -24,17 +24,23 @@ function AccountsPage() {
   });
 
   const revenue = (data?.invoices.filter((i) => i.status === "paid").reduce((s, i) => s + Number(i.total), 0) ?? 0)
-    + (data?.sales.reduce((s, i) => s + Number(i.selling_price) * Number(i.quantity ?? 1), 0) ?? 0);
-  const expensesTotal = data?.expenses.reduce((s, e) => s + Number(e.amount), 0) ?? 0;
+    + (data?.sales.filter((s) => s.payment_status === "paid").reduce((s, i) => s + Number(i.selling_price) * Number(i.quantity ?? 1), 0) ?? 0);
+  const expensesTotal = (data?.expenses.reduce((s, e) => s + Number(e.amount), 0) ?? 0)
+    + (data?.sales.reduce((s, val) => s + Number(val.purchase_cost ?? 0), 0) ?? 0);
   const profit = revenue - expensesTotal;
   const margin = revenue > 0 ? Math.round((profit / revenue) * 100) : 0;
 
-  // Expense by category
-  const byCategory = Object.entries(
-    (data?.expenses ?? []).reduce<Record<string, number>>((acc, e) => {
+  // Expense by category (including sales purchase costs)
+  const byCategory = (() => {
+    const categoryMap = (data?.expenses ?? []).reduce<Record<string, number>>((acc, e) => {
       const k = e.category ?? "misc"; acc[k] = (acc[k] ?? 0) + Number(e.amount); return acc;
-    }, {}),
-  ).map(([name, value]) => ({ name, value }));
+    }, {});
+    const salesCost = (data?.sales ?? []).reduce((s, val) => s + Number(val.purchase_cost ?? 0), 0);
+    if (salesCost > 0) {
+      categoryMap["sales cost"] = (categoryMap["sales cost"] ?? 0) + salesCost;
+    }
+    return Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
+  })();
 
   // Last 6 months bar
   const months = (() => {
@@ -43,12 +49,21 @@ function AccountsPage() {
       const dt = new Date(); dt.setMonth(dt.getMonth() - i);
       const name = dt.toLocaleDateString("en-US", { month: "short" });
       const m = dt.getMonth(); const y = dt.getFullYear();
+      
       const rev = (data?.invoices ?? []).filter((iv) => {
         const dd = new Date(iv.issue_date); return dd.getMonth() === m && dd.getFullYear() === y && iv.status === "paid";
-      }).reduce((s, i) => s + Number(i.total), 0);
+      }).reduce((s, i) => s + Number(i.total), 0)
+      + (data?.sales ?? []).filter((s) => {
+        const dd = new Date(s.sale_date); return dd.getMonth() === m && dd.getFullYear() === y && s.payment_status === "paid";
+      }).reduce((s, i) => s + Number(i.selling_price) * Number(i.quantity ?? 1), 0);
+
       const exp = (data?.expenses ?? []).filter((e) => {
         const dd = new Date(e.expense_date); return dd.getMonth() === m && dd.getFullYear() === y;
-      }).reduce((s, i) => s + Number(i.amount), 0);
+      }).reduce((s, i) => s + Number(i.amount), 0)
+      + (data?.sales ?? []).filter((s) => {
+        const dd = new Date(s.sale_date); return dd.getMonth() === m && dd.getFullYear() === y;
+      }).reduce((s, i) => s + Number(i.purchase_cost ?? 0), 0);
+
       out.push({ name, revenue: rev, expenses: exp });
     }
     return out;

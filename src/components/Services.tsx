@@ -9,11 +9,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   padding: 140px 5%;
-  background-color: #050505;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
+`;
+
+const Orb = styled.div<{ color: string; size: string; top: string; left?: string; right?: string }>`
+  position: absolute;
+  top: ${props => props.top};
+  ${props => (props.left ? `left: ${props.left};` : `right: ${props.right};`)}
+  width: ${props => props.size};
+  height: ${props => props.size};
+  background: ${props => props.color};
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 1;
 `;
 
 const Container = styled.div`
@@ -32,7 +46,7 @@ const Tag = styled.div`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #7B61FF;
+  color: #6E6E73;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -43,8 +57,11 @@ const Title = styled.h2`
   font-size: 3.5vw;
   font-weight: 700;
   line-height: 1.2;
-  color: #FFFFFF;
   letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #7B61FF 0%, #3E52D5 45%, #00C6FF 75%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
   
   @media (max-width: 768px) {
     font-size: 32px;
@@ -54,7 +71,6 @@ const Title = styled.h2`
     font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: #B8B8B8;
   }
 `;
 
@@ -74,24 +90,27 @@ const Grid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 24px;
   padding: 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   opacity: 0;
   transform: translateY(50px);
+  z-index: 3;
   
   &:hover {
-    border-color: rgba(123, 97, 255, 0.3);
+    border-color: rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
-    background-color: rgba(16, 16, 16, 0.8);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
   }
   
   // Custom glowing orb behind card on hover
@@ -102,7 +121,7 @@ const ServiceCard = styled.div`
     left: -20%;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(123, 97, 255, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.01) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -112,17 +131,17 @@ const ServiceCard = styled.div`
   &:hover::before {
     opacity: 1;
   }
-
+ 
   &:hover .service-icon-box {
-    background-color: rgba(123, 97, 255, 0.1);
-    border-color: rgba(123, 97, 255, 0.3);
-    color: #C7FF2F;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #000000 !important;
     transform: scale(1.05);
   }
-
+ 
   &:hover .service-detail-item {
-    color: #FFFFFF;
-    border-color: rgba(255, 255, 255, 0.12);
+    color: #1D1D1F !important;
+    border-color: rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -130,13 +149,13 @@ const IconWrapper = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 32px;
-  color: #7B61FF;
+  color: #1D1D1F !important;
   transition: all 0.4s ease;
 `;
 
@@ -144,7 +163,7 @@ const CardTitle = styled.h3`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 22px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1D1D1F !important;
   margin-bottom: 16px;
 `;
 
@@ -152,7 +171,7 @@ const CardDesc = styled.p`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #B8B8B8;
+  color: #6E6E73 !important;
   margin-bottom: 32px;
 `;
 
@@ -163,7 +182,7 @@ const DetailsList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 24px;
 `;
 
@@ -171,9 +190,9 @@ const DetailItem = styled.li`
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  color: #888888;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #6E6E73 !important;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 4px 10px;
   border-radius: 50px;
   transition: all 0.3s ease;
@@ -221,6 +240,8 @@ export function Services() {
 
   return (
     <Section id="services" ref={sectionRef}>
+      <Orb color="radial-gradient(circle, rgba(0, 224, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%)" size="450px" top="20%" right="-10%" />
+      <Orb color="radial-gradient(circle, rgba(123, 97, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)" size="400px" top="60%" left="-10%" />
       <Container>
         <SectionHeader>
           <Tag>Our Capabilities</Tag>

@@ -88,8 +88,8 @@ export const whyUsData: WhyUsItem[] = [
     id: "why-2",
     number: "02",
     title: "Hyper-Performance Tech Stack",
-    description: "No bloated builders. We engineer lightweight Next.js and React web apps with optimized animations that load under 1.2 seconds, boosting your SEO core vitals.",
-    highlightStat: "99+ Lighthouse Score"
+    description: "No bloated builders. We engineer lightweight, bespoke frontends with custom hardware-accelerated animations that load in under 1 second, boosting your Core Web Vitals.",
+    highlightStat: "Sub-1s Interaction"
   },
   {
     id: "why-3",
@@ -127,7 +127,7 @@ export const servicesData: ServiceItem[] = [
     iconName: "Code",
     title: "Website Development",
     description: "Clean semantic markup optimized for search engines. We write highly modular React components and Next.js applications that load lighting-fast.",
-    details: ["TypeScript", "CSS-in-JS (Emotion)", "GSAP Animations", "Tailored CMS Integrations"]
+    details: ["React Architecture", "Motion Engineering", "Core Web Vitals", "Custom CMS Integrations"]
   },
   {
     id: "srv-app",
@@ -316,7 +316,7 @@ export const teamData: TeamMember[] = [
     name: "Sophia Sterling",
     role: "Lead UI/UX Designer",
     imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&h=500&q=80",
-    hoverBio: "Award-winning designer obsessed with dark mode glassmorphism.",
+    hoverBio: "Award-winning designer obsessed with premium typography and glassmorphism.",
     socials: { linkedin: "#", twitter: "#", dribbble: "#" }
   },
   {
@@ -324,7 +324,7 @@ export const teamData: TeamMember[] = [
     name: "Viktor Vance",
     role: "Lead Frontend Engineer",
     imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=500&q=80",
-    hoverBio: "GSAP wizard who compiles custom animations in his sleep.",
+    hoverBio: "Technical architect specializing in core performance and hardware-accelerated layouts.",
     socials: { linkedin: "#", twitter: "#", dribbble: "#" }
   },
   {
@@ -332,7 +332,7 @@ export const teamData: TeamMember[] = [
     name: "Nadia K.",
     role: "SEO & Performance Specialist",
     imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&h=500&q=80",
-    hoverBio: "Committed to squeezing every millisecond out of client page-loads.",
+    hoverBio: "Committed to scaling organic visitor traffic and search metrics.",
     socials: { linkedin: "#", twitter: "#", dribbble: "#" }
   }
 ];
